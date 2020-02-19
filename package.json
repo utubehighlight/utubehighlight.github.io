@@ -1,0 +1,24 @@
+{
+  "name": "utubehighlight.github.io",
+  "version": "1.0.0",
+  "description": "This website takes a link to a full basketball game and generates and shows the highlights",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/utubehighlight/utubehighlight.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/utubehighlight/utubehighlight.github.io/issues"
+  },
+  "homepage": "https://github.com/utubehighlight/utubehighlight.github.io#readme",
+  "dependencies": {
+    "brew": "0.0.8",
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
+}
