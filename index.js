@@ -5,7 +5,7 @@ const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
-const FPS = 10;
+const FPS = 30;
 const wCap = new cv.VideoCapture(0);
 
 app.get('/', (req, res) => {
