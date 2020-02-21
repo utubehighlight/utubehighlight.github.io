@@ -3,13 +3,41 @@
   <body>
     <img id="image" />
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
+
+    <input id="submitbutton" type="submit" value="Test Send Data">
+    <form>
+    <a href=# id="test"><button class='btn btn-default'>Test</button></a>
+    </form>
 
     <script>
       const socket = io.connect('http://localhost:3000');
       socket.on('image', image => {
         const imageElm = document.getElementById('image');
         imageElm.src = `data:image/jpeg;base64,${image}`;
+      });
+    </script>
+    <button onclick="myFunction()" class="button-primary btn">Jquery</button>
+    <script>
+    $(function() {
+      $('a#test').bind('click', function(){
+        $.getJSON('/send',function(data){
+            //do nothing
+        });
+        return false;
+      });
+    });
+
+
+
+      function myFunction(input)
+      var jqXHR = $.ajax({
+        type:"POST",
+        url: "login",
+        async: false,
+        data: {mydata: input}
       });
     </script>
   </body>
