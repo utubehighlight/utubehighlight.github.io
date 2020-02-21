@@ -1,48 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
-  <body>
-    <img id="image" style="display: none" />
-
+<html>
+<head>
+    <title>Youtube HI-LITE</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="icon" href="static/logo.png">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js"></script>
-
-    <input id="submitbutton" type="submit" value="Test Send Data">
-    <form>
-      <a href=# id="test"><button class='btn btn-default'>Test</button></a>
+    <script src="{{ url_for('static', filename='js/form.js') }}"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <img src="static/logo.png"></img>
+    <h1>Type in your Youtube URL Below</h1>
+    <!--<form method = "POST" action="/send">-->
+    <form class="form-inline" method="POST" action="/process">
+        <div class="form-group">
+            <input class="form-control" id="title" type="text"  name="title" placeholder="Youtube URL">
+        </div>
+        <button class="btn btn-primary" type="submit" value="submit">Load Video</button>
     </form>
+    <form>
+        <a href=# id="test"><button class='btn btn-default'>Run</button></a>
+    </form>
+    <br>
+    <!--<div class="edit alert alert-success" id='edit' role="alert" style="display: hidden;"></div>-->
+    <h3 class="text">Video title: {{ title }} </h3>
+    <script>
+        $(function() {
+            $('#submit').bind('click', function(){
+            $.getJSON('/process',function(data){
+                //do nothing
+            });
 
-    <script>
-      const socket = io.connect('http://localhost:3000');
-      socket.on('image', image => {
-        const imageElm = document.getElementById('image');
-        imageElm.src = `data:image/jpeg;base64,${image}`;
-      });
-    </script>
-    <button onclick="myFunction()" class="button-primary btn">Jquery</button>
-    <script>
-    $(function() {
+            return false;
+            });
+        });
+
+        $(function() {
       $('a#test').bind('click', function(){
         $.getJSON('/send',function(data){
-            //none
+            //do nothing
         });
-      //  const imageElm = document.getElementById('image');
-      //  imageElm.src = data.image;
-        print(data.image)
         return false;
       });
     });
-
-
-
-      function myFunction(input) {
-      var jqXHR = $.ajax({
-        type:"POST",
-        url: "login",
-        async: false,
-        data: {mydata: input}
-      });
-    }
     </script>
-  </body>
+</div>
+</body>
 </html>
